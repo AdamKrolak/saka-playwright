@@ -3,9 +3,12 @@ import { userData } from "../../test-data/emailTest.data";
 import { messages } from "../../test-data/messages.data";
 import { acceptCookies } from "../../fixture/cookies.fixture";
 import { login } from "../../fixture/login.fixture";
+import { LoginPage } from "../../pages/login.page";
 
 test.describe("Login with invalid credentials", () => {
+  let loginPage: LoginPage;
   test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page);
     await page.goto("/en");
     await acceptCookies(page);
   });
@@ -16,11 +19,7 @@ test.describe("Login with invalid credentials", () => {
     // Actions
     await login(page, userData.invalidEmail, userData.validPassword);
     // Assertion
-    await expect(
-      page
-        .getByRole("region", { name: "Notifications (F8)" })
-        .getByRole("status")
-    ).toContainText(messages.loginError);
+    await expect(loginPage.errorMessage).toContainText(messages.loginError);
   });
 
   test("The user is not able to login using an invalid password", async ({
@@ -30,10 +29,6 @@ test.describe("Login with invalid credentials", () => {
     await login(page, userData.validEmail, userData.invalidPassword);
 
     // Assertion
-    await expect(
-      page
-        .getByRole("region", { name: "Notifications (F8)" })
-        .getByRole("status")
-    ).toContainText(messages.loginError);
+    await expect(loginPage.errorMessage).toContainText(messages.loginError);
   });
 });
