@@ -23,11 +23,13 @@ export class NavigationElement {
   readonly audi: Locator;
   readonly finlandFlag: Locator;
   readonly swedenFlag: Locator;
+  readonly logo: Locator;
 
   constructor(private page: Page) {
     //----Section - Main Navigation-----
     this.mainNavigation = this.page.getByRole("navigation", { name: "Main" });
     this.expandedMenu = this.page.locator(".relative.w-full.p-2");
+    this.logo = this.page.getByRole("link", { name: "Saka", exact: true });
     //----Section - Used cars-----
     this.usedCarsButton = this.page.getByRole("button", { name: "Used Cars" });
     this.carBrandsButton = this.page.getByRole("button", {
