@@ -42,10 +42,16 @@ test.describe("Main navigation", () => {
     await navigationElement.companyButton.click();
     await navigationElement.contactUsLink.click();
     await expect(page).toHaveURL("/en/customer-support/contact-request");
-    // await page.locator("#radix-_R_6it6ivb_-trigger-search").click();
-    // await page.getByRole("link", { name: "Home", exact: true }).click();
-    // await page.getByRole("button", { name: "My Saka" }).click();
+  });
 
-    // await page.getByRole("button", { name: "Open language selection" }).click();
+  test("Verify that user can switch language of the website", async ({
+    page,
+  }) => {
+    await navigationElement.languageSelectionButtonEn.click();
+    await navigationElement.finlandFlag.click();
+    await expect(page).toHaveURL("/fi");
+    await navigationElement.languageSelectionButtonFi.click();
+    await navigationElement.swedenFlag.click();
+    await expect(page).toHaveURL("/sv");
   });
 });
