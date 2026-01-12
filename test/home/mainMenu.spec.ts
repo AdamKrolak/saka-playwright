@@ -44,7 +44,7 @@ test.describe("Main navigation", () => {
     await expect(page).toHaveURL("/en/customer-support/contact-request");
   });
 
-  test("Verify that user can switch language of the website", async ({
+  test("The user is able to switch language of the website", async ({
     page,
   }) => {
     await navigationElement.languageSelectionButtonEn.click();
@@ -53,5 +53,14 @@ test.describe("Main navigation", () => {
     await navigationElement.languageSelectionButtonFi.click();
     await navigationElement.swedenFlag.click();
     await expect(page).toHaveURL("/sv");
+  });
+
+  test.only("Verify icons and logo are visible in the main navigation", async ({
+    page,
+  }) => {
+    await expect(navigationElement.logo).toBeVisible();
+    await expect(navigationElement.searchButton).toBeVisible();
+    await expect(navigationElement.homeLink).toBeVisible();
+    await expect(navigationElement.mySakaButton).toBeVisible();
   });
 });
