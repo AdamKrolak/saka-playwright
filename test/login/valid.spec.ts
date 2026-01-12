@@ -22,5 +22,6 @@ test.describe("Login with valid credentials", () => {
     await expect(
       page.getByRole("heading", { name: "Hei Adam, tervetuloa OmaSakaan" })
     ).toContainText("Adam");
+    await page.getByRole("link", { name: "Petrol Cars", exact: true }).click();
   });
 });
