@@ -17,11 +17,7 @@ test.describe("Login with valid credentials", () => {
     // Actions
     await login(page, userData.validEmail, userData.validPassword);
     // Assertion
-    await expect(
-      page
-        .getByRole("region", { name: "Notifications (F8)" })
-        .getByRole("status")
-    ).not.toBeVisible();
+    await expect(loginPage.errorMessage).not.toBeVisible();
     await expect(page).toHaveURL("/fi/oma-saka");
     await expect(
       page.getByRole("heading", { name: "Hei Adam, tervetuloa OmaSakaan" })
