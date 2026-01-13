@@ -42,28 +42,15 @@ test.describe("Home Page test", () => {
     page,
   }) => {
     await page.pause();
-    await page.evaluate(() => window.scrollBy(0, 400));
-    await expect(
-      page.getByRole("heading", { name: "Electric cars" })
-    ).toBeVisible();
+    await page.evaluate(() => window.scrollBy(0, 500));
+    await expect(homePage.electricCarsHeading).toBeVisible();
 
-    await expect(page.locator(".flex.gap-4.md\\:gap-6").first()).toBeVisible();
-    await expect(page.getByText("Premium carsSee more")).toBeVisible();
-    await expect(
-      page.locator(
-        "div:nth-child(3) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
-      )
-    ).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: "Family cars" })
-    ).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: "Recently viewed cars" })
-    ).toBeVisible();
-    await expect(
-      page.locator(
-        "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
-      )
-    ).toBeVisible();
+    await expect(homePage.electricCarsSlider).toBeVisible();
+    await expect(homePage.premiumCarsHeading).toBeVisible();
+    await expect(homePage.premiumCarsSlider).toBeVisible();
+    await expect(homePage.familyCarsHeading).toBeVisible();
+    await expect(homePage.familyCarsSlider).toBeVisible();
+    await expect(homePage.recentlyViewedCarsSection).toBeVisible();
+    await expect(homePage.recentlyViewedCarsSlider).toBeVisible();
   });
 });
