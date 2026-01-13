@@ -37,4 +37,33 @@ test.describe("Home Page test", () => {
       "/en/products-and-services"
     );
   });
+
+  test("Verify that car types sections and sliders are visible on homepage", async ({
+    page,
+  }) => {
+    await page.pause();
+    await page.evaluate(() => window.scrollBy(0, 400));
+    await expect(
+      page.getByRole("heading", { name: "Electric cars" })
+    ).toBeVisible();
+
+    await expect(page.locator(".flex.gap-4.md\\:gap-6").first()).toBeVisible();
+    await expect(page.getByText("Premium carsSee more")).toBeVisible();
+    await expect(
+      page.locator(
+        "div:nth-child(3) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+      )
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Family cars" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Recently viewed cars" })
+    ).toBeVisible();
+    await expect(
+      page.locator(
+        "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+      )
+    ).toBeVisible();
+  });
 });
