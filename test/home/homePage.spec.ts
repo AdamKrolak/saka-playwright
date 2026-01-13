@@ -53,4 +53,31 @@ test.describe("Home Page test", () => {
     await expect(homePage.recentlyViewedCarsSection).toBeVisible();
     await expect(homePage.recentlyViewedCarsSlider).toBeVisible();
   });
+
+  test("Verify fuel types section is visible and has correct links", async ({
+    page,
+  }) => {
+    await page.pause();
+    await page.evaluate(() => window.scrollBy(0, 600));
+    await expect(
+      page.getByRole("heading", { name: "Explore different fuel types" })
+    ).toBeVisible();
+    await expect(
+      page.getByText(
+        "Explore different fuel types Electric Hybrid Petrol Diesel"
+      )
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Electric Vehicle Electric" })
+    ).toHaveAttribute("href", "/en/electric-cars");
+    await expect(
+      page.getByRole("link", { name: "Hybrid Hybrid" })
+    ).toHaveAttribute("href", "/en/hybrid-cars");
+    await expect(
+      page.getByRole("link", { name: "Petrol Petrol" })
+    ).toHaveAttribute("href", "/en/petrol-cars");
+    await expect(
+      page.getByRole("link", { name: "Diesel Diesel" })
+    ).toHaveAttribute("href", "/en/diesel-cars");
+  });
 });
