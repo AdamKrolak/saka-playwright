@@ -59,26 +59,24 @@ test.describe("Home Page test", () => {
   }) => {
     await page.pause();
     await page.evaluate(() => window.scrollBy(0, 600));
-    await expect(
-      page.getByRole("heading", { name: "Explore different fuel types" })
-    ).toBeVisible();
-    await expect(
-      page.getByText(
-        "Explore different fuel types Electric Hybrid Petrol Diesel"
-      )
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: "Electric Vehicle Electric" })
-    ).toHaveAttribute("href", "/en/electric-cars");
-    await expect(
-      page.getByRole("link", { name: "Hybrid Hybrid" })
-    ).toHaveAttribute("href", "/en/hybrid-cars");
-    await expect(
-      page.getByRole("link", { name: "Petrol Petrol" })
-    ).toHaveAttribute("href", "/en/petrol-cars");
-    await expect(
-      page.getByRole("link", { name: "Diesel Diesel" })
-    ).toHaveAttribute("href", "/en/diesel-cars");
+    await expect(homePage.fuelTypesHeading).toBeVisible();
+    await expect(homePage.fuelTypesTitle).toBeVisible();
+    await expect(homePage.electricVehicleLink).toHaveAttribute(
+      "href",
+      "/en/electric-cars"
+    );
+    await expect(homePage.hybridLink).toHaveAttribute(
+      "href",
+      "/en/hybrid-cars"
+    );
+    await expect(homePage.petrolLink).toHaveAttribute(
+      "href",
+      "/en/petrol-cars"
+    );
+    await expect(homePage.dieselLink).toHaveAttribute(
+      "href",
+      "/en/diesel-cars"
+    );
   });
 
   test("Verify additional services section and links", async ({ page }) => {

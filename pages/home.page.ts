@@ -18,6 +18,15 @@ export class HomePage {
   readonly familyCarsSlider: Locator;
   readonly recentlyViewedCarsSection: Locator;
   readonly recentlyViewedCarsSlider: Locator;
+
+  //----Fuel types section-----
+  readonly fuelTypesHeading: Locator;
+  readonly fuelTypesTitle: Locator;
+  readonly electricVehicleLink: Locator;
+  readonly hybridLink: Locator;
+  readonly petrolLink: Locator;
+  readonly dieselLink: Locator;
+
   //-----Additional services section-----
   readonly additionalServicesHeading: Locator;
   readonly sakaVarma: Locator;
@@ -74,6 +83,20 @@ export class HomePage {
     this.recentlyViewedCarsSlider = this.page.locator(
       "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
     );
+
+    //----Fuel types section-----
+    this.fuelTypesHeading = this.page.getByRole("heading", {
+      name: "Explore different fuel types",
+    });
+    this.fuelTypesTitle = this.page.getByText(
+      "Explore different fuel types Electric Hybrid Petrol Diesel"
+    );
+    this.electricVehicleLink = this.page.getByRole("link", {
+      name: "Electric Vehicle Electric",
+    });
+    this.hybridLink = this.page.getByRole("link", { name: "Hybrid Hybrid" });
+    this.petrolLink = this.page.getByRole("link", { name: "Petrol Petrol" });
+    this.dieselLink = this.page.getByRole("link", { name: "Diesel Diesel" });
 
     //-----Additional services-----
     this.additionalServicesHeading = this.page.getByRole("heading", {
