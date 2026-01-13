@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { acceptCookies } from "../../fixture/cookies.fixture";
 import { NavigationElement } from "../../pages/navigation.element";
 
-test.describe("Main navigation", () => {
+test.describe("Main navigation test", () => {
   let navigationElement: NavigationElement;
   test.beforeEach(async ({ page }) => {
     await page.goto("/en");

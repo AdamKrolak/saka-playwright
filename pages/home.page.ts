@@ -18,6 +18,12 @@ export class HomePage {
   readonly familyCarsSlider: Locator;
   readonly recentlyViewedCarsSection: Locator;
   readonly recentlyViewedCarsSlider: Locator;
+  //-----Additional services section-----
+  readonly additionalServicesHeading: Locator;
+  readonly sakaVarma: Locator;
+  readonly sakaKasko: Locator;
+  readonly rahoitus: Locator;
+  readonly kotiintoimitus: Locator;
 
   constructor(private page: Page) {
     //---- Hero Banner-----
@@ -68,5 +74,16 @@ export class HomePage {
     this.recentlyViewedCarsSlider = this.page.locator(
       "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
     );
+
+    //-----Additional services-----
+    this.additionalServicesHeading = this.page.getByRole("heading", {
+      name: "Our additional services to",
+    });
+    this.sakaVarma = this.page.getByRole("link", { name: "SakaVarma" }).first();
+    this.sakaKasko = this.page.getByRole("link", { name: "SakaKasko" }).first();
+    this.rahoitus = this.page.getByRole("link", { name: "Rahoitus" });
+    this.kotiintoimitus = this.page.getByRole("link", {
+      name: "Kotiintoimitus Kotiintoimitus",
+    });
   }
 }

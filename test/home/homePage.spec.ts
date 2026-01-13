@@ -80,4 +80,13 @@ test.describe("Home Page test", () => {
       page.getByRole("link", { name: "Diesel Diesel" })
     ).toHaveAttribute("href", "/en/diesel-cars");
   });
+
+  test("Verify additional services section and links", async ({ page }) => {
+    await page.evaluate(() => window.scrollBy(0, 4000));
+    await expect(homePage.additionalServicesHeading).toBeVisible();
+    await expect(homePage.sakaVarma).toBeVisible();
+    await expect(homePage.sakaKasko).toBeVisible();
+    await expect(homePage.rahoitus).toBeVisible();
+    await expect(homePage.kotiintoimitus).toBeVisible();
+  });
 });
