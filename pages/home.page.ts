@@ -5,10 +5,19 @@ export class HomePage {
   readonly heroBanner: Locator;
   readonly heroBannerText: Locator;
   readonly heroBannerButton: Locator;
-
+  //---- Grid section-----
   readonly gridBuyACar: Locator;
   readonly gridSellYourCar: Locator;
   readonly gridProductsAndServices: Locator;
+  //---- Car types sections and sliders-----
+  readonly electricCarsHeading: Locator;
+  readonly electricCarsSlider: Locator;
+  readonly premiumCarsHeading: Locator;
+  readonly premiumCarsSlider: Locator;
+  readonly familyCarsHeading: Locator;
+  readonly familyCarsSlider: Locator;
+  readonly recentlyViewedCarsSection: Locator;
+  readonly recentlyViewedCarsSlider: Locator;
 
   constructor(private page: Page) {
     //---- Hero Banner-----
@@ -35,5 +44,29 @@ export class HomePage {
     this.gridProductsAndServices = this.page.getByRole("link", {
       name: "See all products and services",
     });
+
+    //---- Car types sections and sliders-----
+    this.electricCarsHeading = this.page.getByRole("heading", {
+      name: "Electric cars",
+    });
+    this.electricCarsSlider = this.page
+      .locator(".flex.gap-4.md\\:gap-6")
+      .first();
+    this.premiumCarsHeading = this.page.getByText("Premium carsSee more");
+    this.premiumCarsSlider = this.page.locator(
+      "div:nth-child(3) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+    );
+    this.familyCarsHeading = this.page.getByRole("heading", {
+      name: "Family cars",
+    });
+    this.familyCarsSlider = this.page.locator(
+      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+    );
+    this.recentlyViewedCarsSection = this.page.getByRole("heading", {
+      name: "Recently viewed cars",
+    });
+    this.recentlyViewedCarsSlider = this.page.locator(
+      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+    );
   }
 }
