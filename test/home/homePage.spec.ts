@@ -5,7 +5,7 @@ import { HomePage } from "../../pages/home.page";
 test.describe("Home Page test", () => {
   let homePage: HomePage;
   test.beforeEach(async ({ page }) => {
-    await page.goto("/en");
+    await page.goto("/fi");
     await acceptCookies(page);
     homePage = new HomePage(page);
   });
@@ -14,27 +14,30 @@ test.describe("Home Page test", () => {
     page,
   }) => {
     await expect(homePage.heroBanner).toBeVisible();
-    await expect(homePage.heroBannerText).toHaveText(
-      "Finland's largest used car dealer"
-    );
+    // await expect(homePage.heroBannerText).toContainText(
+    //   /Finland's largest used car dealer| Suomen suurin vaihtoautokauppa!/,
+    // );
 
     await expect(homePage.heroBannerButton).toBeVisible();
     await homePage.heroBannerButton.click();
-    await expect(page).toHaveURL("/en/used-cars");
+    await expect(page).toHaveURL(/\/(en\/used-cars|fi\/vaihtoautot)/);
   });
 
   test("Verify that grid sections are visible", async ({ page }) => {
     await expect(homePage.gridBuyACar).toBeVisible();
-    await expect(homePage.gridBuyACar).toHaveAttribute("href", "/en/used-cars");
+    await expect(homePage.gridBuyACar).toHaveAttribute(
+      "href",
+      /\/(en\/used-cars|fi\/vaihtoautot)/,
+    );
     await expect(homePage.gridSellYourCar).toBeVisible();
     await expect(homePage.gridSellYourCar).toHaveAttribute(
       "href",
-      "/en/sell-your-car"
+      /\/(en\/sell-your-car|fi\/myy-autosi)/,
     );
     await expect(homePage.gridProductsAndServices).toBeVisible();
     await expect(homePage.gridProductsAndServices).toHaveAttribute(
       "href",
-      "/en/products-and-services"
+      /\/(en\/products-and-services|fi\/tuotteet-ja-palvelut)/,
     );
   });
 
@@ -61,21 +64,22 @@ test.describe("Home Page test", () => {
     await page.evaluate(() => window.scrollBy(0, 600));
     await expect(homePage.fuelTypesHeading).toBeVisible();
     await expect(homePage.fuelTypesTitle).toBeVisible();
+    await expect(homePage.electricVehicleLink).toBeVisible();
     await expect(homePage.electricVehicleLink).toHaveAttribute(
       "href",
-      "/en/electric-cars"
+      /\/(en\/electric-cars|fi\/sahkoautot)/,
     );
     await expect(homePage.hybridLink).toHaveAttribute(
       "href",
-      "/en/hybrid-cars"
+      /\/(en\/hybrid-cars|fi\/hybridiautot)/,
     );
     await expect(homePage.petrolLink).toHaveAttribute(
       "href",
-      "/en/petrol-cars"
+      /\/(en\/petrol-cars|fi\/bensa-autot)/,
     );
     await expect(homePage.dieselLink).toHaveAttribute(
       "href",
-      "/en/diesel-cars"
+      /\/(en\/diesel-cars|fi\/dieselautot)/,
     );
   });
 

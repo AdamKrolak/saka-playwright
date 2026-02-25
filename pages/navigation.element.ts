@@ -31,62 +31,73 @@ export class NavigationElement {
     this.expandedMenu = this.page.locator(".relative.w-full.p-2");
     this.logo = this.page.getByRole("link", { name: "Saka", exact: true });
     //----Section - Used cars-----
-    this.usedCarsButton = this.page.getByRole("button", { name: "Used Cars" });
+    this.usedCarsButton = this.page.getByRole("button", {
+      name: /Used Cars|Vaihtoautot/,
+    });
     this.carBrandsButton = this.page.getByRole("button", {
-      name: "Car Brands",
+      name: /Car Brands|Automerkit/,
     });
     this.petrolCarsButton = this.page.getByRole("link", {
-      name: "Petrol Cars",
+      name: /Petrol Cars|Bensiiniautot/,
       exact: true,
     });
     this.audi = this.page.getByRole("button", {
-      name: "Open submenu for Audi",
+      name: /Open submenu for Audi|Avaa alivalikko kohteelle Audi/,
     });
-    this.audiSubMenu = this.page.getByRole("link", { name: "See all models" });
+    this.audiSubMenu = this.page.getByRole("link", {
+      name: /See all models|Merkin kaikki mallit/,
+    });
     //----Section - Sell your car-----
     this.sellYourCarButton = this.page.getByRole("button", {
-      name: "Sell your car",
+      name: /Sell your car|Myy autosi/,
     });
     this.sellYourCarLink = this.page.getByRole("link", {
-      name: "Sell your car",
+      name: /Sell your car|Myy autosi/,
     });
     //----Section - Products & Services-----
     this.productsAndServicesButton = this.page.getByRole("button", {
-      name: "Products & Services",
+      name: /Products & Services|Tuotteet ja palvelut/,
     });
     this.additionalServicesLink = this.page.getByRole("link", {
-      name: "Additional services for your",
+      name: /Additional services for your|Autoilun lisäpalvelut/,
     });
     //----Section - News and Campaigns-----
     this.newsAndCampaignsLink = this.page.getByRole("link", {
-      name: "News and Campaigns",
+      name: /News and Campaigns|Uutiset ja kampanjat/,
     });
     //----Section - Sales Locations-----
     this.salesLocationsLink = this.page.getByRole("link", {
-      name: "Sales Locations",
+      name: /Sales Locations|Toimipisteet/,
     });
     //----Section - Company-----
-    this.companyButton = this.page.getByRole("button", { name: "Company" });
+    this.companyButton = this.page.getByRole("button", {
+      name: /Company|Yritys/,
+    });
     this.contactUsLink = this.page
       .getByLabel("Main")
-      .getByRole("link", { name: "Contact us" });
+      .getByRole("link", { name: /Contact us|Yhteydenotto/ });
     //----Section - Search-----
     this.searchButton = this.page.locator("#radix-_R_6it6ivb_-trigger-search");
     //----Section - My Account-----
-    this.homeLink = this.page.getByRole("link", { name: "Home", exact: true });
-    this.mySakaButton = this.page.getByRole("button", { name: "My Saka" });
+    this.homeLink = this.page.getByRole("link", {
+      name: /Home|Koti/,
+      exact: true,
+    });
+    this.mySakaButton = this.page.getByRole("button", {
+      name: /My Saka|Oma Saka/,
+    });
     this.languageSelectionButtonEn = this.page.getByRole("button", {
-      name: "Open language selection",
+      name: /Open language selection|Avaa kielivalinta/,
     });
     this.languageSelectionButtonFi = this.page.getByRole("button", {
-      name: "Avaa kielivalinta",
+      name: /Avaa kielivalinta|Open language selection/,
     });
 
     this.finlandFlag = this.page.getByRole("menuitem", {
-      name: "Switch to FI FI",
+      name: /Switch to FI FI|Nykyinen kieli: FI/,
     });
     this.swedenFlag = this.page.getByRole("menuitem", {
-      name: "Vaihda kieleen SV SV",
+      name: /Switch to SV SV|Vaihda kieleen SV SV/,
     });
   }
 }

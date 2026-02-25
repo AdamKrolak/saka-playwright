@@ -38,75 +38,90 @@ export class HomePage {
     //---- Hero Banner-----
     this.heroBanner = this.page
       .locator("div")
-      .filter({ hasText: "Finland's largest used car" })
+      .filter({
+        hasText:
+          /Finland's largest used car dealer|Suomen suurin vaihtoautokauppa!/,
+      })
       .nth(4);
     this.heroBannerText = this.page.getByRole("heading", {
-      name: "Finland's largest used car",
+      name: /Finland's largest used car dealer|Suomen suurin vaihtoautokauppa!/,
     });
     this.heroBannerButton = this.page
-      .getByRole("link", { name: "See all used cars" })
+      .getByRole("link", { name: /See all used cars|Katso kaikki vaihtoautot/ })
       .nth(1);
 
     //---- Grid section-----
     this.gridBuyACar = this.page.getByRole("link", {
-      name: "All used cars",
+      name: /All used cars|Kaikki vaihtoautot/,
       exact: true,
     });
     this.gridSellYourCar = this.page.getByRole("link", {
-      name: "Sell your car",
+      name: /Sell your car|Myy autosi/,
       exact: true,
     });
     this.gridProductsAndServices = this.page.getByRole("link", {
-      name: "See all products and services",
+      name: /See all products and services|Katso kaikki tuotteet ja palvelut/,
     });
 
     //---- Car types sections and sliders-----
     this.electricCarsHeading = this.page.getByRole("heading", {
-      name: "Electric cars",
+      name: /Electric cars|Sähköautot/,
     });
     this.electricCarsSlider = this.page
       .locator(".flex.gap-4.md\\:gap-6")
       .first();
-    this.premiumCarsHeading = this.page.getByText("Premium carsSee more");
+    this.premiumCarsHeading = this.page.getByRole("heading", {
+      name: /Premium cars|Premium-autot/,
+    });
     this.premiumCarsSlider = this.page.locator(
-      "div:nth-child(3) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+      "div:nth-child(3) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4",
     );
     this.familyCarsHeading = this.page.getByRole("heading", {
-      name: "Family cars",
+      name: /Family cars|Perheautot/,
     });
     this.familyCarsSlider = this.page.locator(
-      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4",
     );
     this.recentlyViewedCarsSection = this.page.getByRole("heading", {
-      name: "Recently viewed cars",
+      name: /Recently viewed cars|Viimeksi katsellut autot/,
     });
     this.recentlyViewedCarsSlider = this.page.locator(
-      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4"
+      "div:nth-child(5) > .w-full.grid-cols > div > .overflow-hidden.pb-8 > .flex.gap-4",
     );
 
     //----Fuel types section-----
     this.fuelTypesHeading = this.page.getByRole("heading", {
-      name: "Explore different fuel types",
+      name: /Explore different fuel types|Tutustu käyttövoimiin/,
     });
     this.fuelTypesTitle = this.page.getByText(
-      "Explore different fuel types Electric Hybrid Petrol Diesel"
+      /Explore different fuel types Electric Hybrid Petrol Diesel|Tutustu käyttövoimiin/,
     );
     this.electricVehicleLink = this.page.getByRole("link", {
-      name: "Electric Vehicle Electric",
+      name: /Electric Vehicle Electric|Sähkoauto Sähkö/,
     });
-    this.hybridLink = this.page.getByRole("link", { name: "Hybrid Hybrid" });
-    this.petrolLink = this.page.getByRole("link", { name: "Petrol Petrol" });
-    this.dieselLink = this.page.getByRole("link", { name: "Diesel Diesel" });
+    this.hybridLink = this.page.getByRole("link", {
+      name: /Hybrid Hybrid|Hybridi Hybridi/,
+    });
+    this.petrolLink = this.page.getByRole("link", {
+      name: /Petrol Petrol|Bensa Bensa/,
+    });
+    this.dieselLink = this.page.getByRole("link", {
+      name: /Diesel Diesel|Diesel Diesel/,
+    });
 
     //-----Additional services-----
     this.additionalServicesHeading = this.page.getByRole("heading", {
-      name: "Our additional services to",
+      name: /Our additional services to|Lisää palveluitamme/,
     });
-    this.sakaVarma = this.page.getByRole("link", { name: "SakaVarma" }).first();
-    this.sakaKasko = this.page.getByRole("link", { name: "SakaKasko" }).first();
-    this.rahoitus = this.page.getByRole("link", { name: "Rahoitus" });
+    this.sakaVarma = this.page
+      .getByRole("link", { name: /SakaVarma|SakaVarma/ })
+      .first();
+    this.sakaKasko = this.page
+      .getByRole("link", { name: /SakaKasko|SakaKasko/ })
+      .first();
+    this.rahoitus = this.page.getByRole("link", { name: /Rahoitus|Rahoitus/ });
     this.kotiintoimitus = this.page.getByRole("link", {
-      name: "Kotiintoimitus Kotiintoimitus",
+      name: /Kotiintoimitus Kotiintoimitus|Kotiintoimitus Kotiintoimitus/,
     });
   }
 }
